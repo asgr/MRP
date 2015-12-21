@@ -33,7 +33,7 @@ MRP_dNdlnM=function(H=10, norm=2.258917e-19, Hs=14.47256, alpha=-1.863804 , beta
     }
   }
   x=10^(H-Hs)
-  return(norm*beta*(x^(alpha+1)*exp(-x^beta)))
+  return(10^Hs*norm*beta*(x^(alpha+1)*exp(-x^beta)))
 }
 
 MRP_dNdlog10M=function(H=10, norm=2.258917e-19, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, parm){
@@ -47,7 +47,7 @@ MRP_dNdlog10M=function(H=10, norm=2.258917e-19, Hs=14.47256, alpha=-1.863804 , b
     }
   }
   x=10^(H-Hs)
-  return(norm*beta*(x^(alpha+1)*exp(-x^beta))*log(10))
+  return(10^Hs*norm*beta*(x^(alpha+1)*exp(-x^beta))*log(10))
 }
 
 MRP_PDF=function(H=10, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, Hmin=8, parm){
@@ -152,10 +152,10 @@ MRPrho_dNdlnM=function(H=10, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, Omeg
     norm=A
   }
   x=10^(H-Hs)
-  return(norm*beta*(x^(alpha+1)*exp(-x^beta)))
+  return(10^Hs*norm*beta*(x^(alpha+1)*exp(-x^beta)))
 }
 
-MRPrho_dNdlog10M=function(H=10, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, OmegaM = 0.308, OmegaL = 1 - OmegaM - OmegaR, OmegaR = 0, w0 = -1, wprime = 0, ref, parm, normtype='cos'){
+MRPrho_dNdlog10M=function(H=10, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, A=1.727006e-19, OmegaM = 0.308, OmegaL = 1 - OmegaM - OmegaR, OmegaR = 0, w0 = -1, wprime = 0, ref, parm, normtype='cos'){
 	#Utility function for MRP HMF work
 	#Differential dN/dlog10M
   #HMF forced to integrate to the rhomean0
@@ -173,12 +173,12 @@ MRPrho_dNdlog10M=function(H=10, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, O
     norm=A
   }
   x=10^(H-Hs)
-  return(norm*beta*(x^(alpha+1)*exp(-x^beta))*log(10))
+  return(10^Hs*norm*beta*(x^(alpha+1)*exp(-x^beta))*log(10))
 }
 
 MRPrhoint_N=function(Hmin=8, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, OmegaM = 0.308, OmegaL = 1 - OmegaM - OmegaR, OmegaR = 0, w0 = -1, wprime = 0, ref, parm){
 	#Utility function for MRP HMF work
-	#Number of halos above Hmin for arbitrary nromalisation
+	#Number of halos above Hmin for arbitrary normalisation
 	#HMF forced to integrate to rhomean0
   if(!missing(parm)){
     if(length(parm)==3){
@@ -279,7 +279,7 @@ MRP.B13rho_dNdlnM=function(z=0, H=seq(10,15,by=0.01), OmegaM=0.308, OmegaL=1-Ome
     norm=MRP.B13.A(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
   }
   x=10^(H-Hs)
-  y=norm*beta*(x^(alpha+1)*exp(-x^beta))
+  y=10^Hs*norm*beta*(x^(alpha+1)*exp(-x^beta))
   if(masses){out=cbind(H, y)}else(out=y)
   return(out)
 }
@@ -298,7 +298,7 @@ MRP.B13rho_dNdlog10M=function(z=0, H=seq(10,15,by=0.01), OmegaM=0.308, OmegaL=1-
     norm=MRP.B13.A(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
   }
   x=10^(H-Hs)
-  y=norm*beta*(x^(alpha+1)*exp(-x^beta))*log(10)
+  y=10^Hs*norm*beta*(x^(alpha+1)*exp(-x^beta))*log(10)
   if(masses){out=cbind(H, y)}else(out=y)
   return(out)
 }
