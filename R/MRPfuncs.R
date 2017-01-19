@@ -8,7 +8,7 @@
   return(out)
 }
 
-MRP_dNdM=function(H=10, norm=2.258917e-19, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, parm){
+MRP_dNdM=function(H=10, norm=1.727006e-19, Hs=14.42947, alpha=-1.864908 , beta=0.7097976, parm){
 	#Utility function for MRP HMF work
 	#Differential dN/dM HMF with arbitrary normalisation
   if(!missing(parm)){
@@ -22,7 +22,7 @@ MRP_dNdM=function(H=10, norm=2.258917e-19, Hs=14.47256, alpha=-1.863804 , beta=0
   return(norm*beta*(x^(alpha)*exp(-x^beta)))
 }
 
-MRP_dNdlnM=function(H=10, norm=2.258917e-19, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, parm){
+MRP_dNdlnM=function(H=10, norm=1.727006e-19, Hs=14.42947, alpha=-1.864908 , beta=0.7097976, parm){
 	#Utility function for MRP HMF work
 	#Differential dN/dlnM HMF with arbitrary normalisation
   if(!missing(parm)){
@@ -36,7 +36,7 @@ MRP_dNdlnM=function(H=10, norm=2.258917e-19, Hs=14.47256, alpha=-1.863804 , beta
   return(10^Hs*norm*beta*(x^(alpha+1)*exp(-x^beta)))
 }
 
-MRP_dNdlog10M=function(H=10, norm=2.258917e-19, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, parm){
+MRP_dNdlog10M=function(H=10, norm=1.727006e-19, Hs=14.42947, alpha=-1.864908 , beta=0.7097976, parm){
 	#Utility function for MRP HMF work
 	#Differential dN/dlog10M HMF with arbitrary normalisation
   if(!missing(parm)){
@@ -50,7 +50,7 @@ MRP_dNdlog10M=function(H=10, norm=2.258917e-19, Hs=14.47256, alpha=-1.863804 , b
   return(10^Hs*norm*beta*(x^(alpha+1)*exp(-x^beta))*log(10))
 }
 
-MRP_PDF=function(H=10, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, Hmin=8, parm){
+MRP_PDF=function(H=10, Hs=14.42947, alpha=-1.864908 , beta=0.7097976, Hmin=8, parm){
 	#Utility function for MRP HMF work
 	#HMF forced to form a true PDF down to Hmin
   #This correctly integrates to 1, i.e. this returns the density for a true PDF.
@@ -65,7 +65,7 @@ MRP_PDF=function(H=10, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, Hmin=8, pa
   	return(beta*(x^(alpha)*exp(-x^beta)/gamma_inc((10^(Hmin-Hs))^beta,a=(alpha+1)/beta)/(10^Hs)))
 }
 
-MRPint_N=function(Hmin=8, norm=2.258917e-19, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, parm){
+MRPint_N=function(Hmin=8, norm=1.727006e-19, Hs=14.42947, alpha=-1.864908 , beta=0.7097976, parm){
 	#Utility function for MRP HMF work
 	#Number of halos above Hmin for arbitrary normalisation
   if(!missing(parm)){
@@ -78,7 +78,7 @@ MRPint_N=function(Hmin=8, norm=2.258917e-19, Hs=14.47256, alpha=-1.863804 , beta
 	return(norm*(10^Hs)*gamma_inc((10^(Hmin-Hs))^beta,a=(alpha+1)/beta))
 }
 
-MRPint_M=function(Hmin=8, norm=2.258917e-19, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, parm){
+MRPint_M=function(Hmin=8, norm=1.727006e-19, Hs=14.42947, alpha=-1.864908 , beta=0.7097976, parm){
 	#Utility function for MRP HMF work
 	#Mass of halos above Hmin for arbitrary normalisation
   if(!missing(parm)){
@@ -91,7 +91,7 @@ MRPint_M=function(Hmin=8, norm=2.258917e-19, Hs=14.47256, alpha=-1.863804 , beta
 	return(norm*(10^Hs)^2*gamma_inc((10^(Hmin-Hs))^beta,a=(alpha+2)/beta))
 }
 
-MRPnorm=function(Hs=14.47256, alpha= -1.863804 , beta=0.7196221, OmegaM = 0.308, OmegaL = 1 - OmegaM - OmegaR, OmegaR = 0, w0 = -1, wprime = 0, ref, parm){
+MRPnorm=function(Hs=14.42947, alpha= -1.864908 , beta=0.7097976, OmegaM = 0.308, OmegaL = 1 - OmegaM - OmegaR, OmegaR = 0, w0 = -1, wprime = 0, ref, parm){
 	#Utility function for MRP HMF work
 	#Function to normalise a given differential dn/dm HMF to rhomean0
   if(!missing(ref)){
@@ -113,7 +113,7 @@ MRPnorm=function(Hs=14.47256, alpha= -1.863804 , beta=0.7196221, OmegaM = 0.308,
 	return(rhomean0/temp)
 }
 
-MRPrho_dNdM=function(H=10, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, OmegaM = 0.308, OmegaL = 1 - OmegaM - OmegaR, OmegaR = 0, w0 = -1, wprime = 0, ref, parm, normtype='cos'){
+MRPrho_dNdM=function(H=10, Hs=14.42947, alpha=-1.864908 , beta=0.7097976, OmegaM = 0.308, OmegaL = 1 - OmegaM - OmegaR, OmegaR = 0, w0 = -1, wprime = 0, ref, parm, normtype='cos'){
 	#Utility function for MRP HMF work
 	#Differential dN/dM
   #HMF forced to integrate to the rhomean0
@@ -128,13 +128,13 @@ MRPrho_dNdM=function(H=10, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, OmegaM
 	  norm=MRPnorm(Hs=Hs, alpha=alpha, beta=beta, OmegaM=OmegaM, OmegaL=OmegaL, OmegaR=OmegaR, w0=w0, wprime=wprime, ref=ref)
   }
   if(normtype=='A'){
-    norm=A
+    norm=parm[4]
   }
   x=10^(H-Hs)
   return(norm*beta*(x^(alpha)*exp(-x^beta)))
 }
 
-MRPrho_dNdlnM=function(H=10, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, OmegaM = 0.308, OmegaL = 1 - OmegaM - OmegaR, OmegaR = 0, w0 = -1, wprime = 0, ref, parm, normtype='cos'){
+MRPrho_dNdlnM=function(H=10, Hs=14.42947, alpha=-1.864908 , beta=0.7097976, OmegaM = 0.308, OmegaL = 1 - OmegaM - OmegaR, OmegaR = 0, w0 = -1, wprime = 0, ref, parm, normtype='cos'){
 	#Utility function for MRP HMF work
 	#Differential dN/dlnM
   #HMF forced to integrate to the rhomean0
@@ -149,13 +149,13 @@ MRPrho_dNdlnM=function(H=10, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, Omeg
 	  norm=MRPnorm(Hs=Hs, alpha=alpha, beta=beta, OmegaM=OmegaM, OmegaL=OmegaL, OmegaR=OmegaR, w0=w0, wprime=wprime, ref=ref)
   }
   if(normtype=='A'){
-    norm=A
+    norm=parm[4]
   }
   x=10^(H-Hs)
   return(10^Hs*norm*beta*(x^(alpha+1)*exp(-x^beta)))
 }
 
-MRPrho_dNdlog10M=function(H=10, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, A=1.727006e-19, OmegaM = 0.308, OmegaL = 1 - OmegaM - OmegaR, OmegaR = 0, w0 = -1, wprime = 0, ref, parm, normtype='cos'){
+MRPrho_dNdlog10M=function(H=10, Hs=14.42947, alpha=-1.864908 , beta=0.7097976, A=1.727006e-19, OmegaM = 0.308, OmegaL = 1 - OmegaM - OmegaR, OmegaR = 0, w0 = -1, wprime = 0, ref, parm, normtype='cos'){
 	#Utility function for MRP HMF work
 	#Differential dN/dlog10M
   #HMF forced to integrate to the rhomean0
@@ -170,13 +170,13 @@ MRPrho_dNdlog10M=function(H=10, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, A
 	  norm=MRPnorm(Hs=Hs, alpha=alpha, beta=beta, OmegaM=OmegaM, OmegaL=OmegaL, OmegaR=OmegaR, w0=w0, wprime=wprime, ref=ref)
   }
   if(normtype=='A'){
-    norm=A
+    norm=parm[4]
   }
   x=10^(H-Hs)
   return(10^Hs*norm*beta*(x^(alpha+1)*exp(-x^beta))*log(10))
 }
 
-MRPrhoint_N=function(Hmin=8, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, OmegaM = 0.308, OmegaL = 1 - OmegaM - OmegaR, OmegaR = 0, w0 = -1, wprime = 0, ref, parm){
+MRPrhoint_N=function(Hmin=8, Hs=14.42947, alpha=-1.864908 , beta=0.7097976, OmegaM = 0.308, OmegaL = 1 - OmegaM - OmegaR, OmegaR = 0, w0 = -1, wprime = 0, ref, parm){
 	#Utility function for MRP HMF work
 	#Number of halos above Hmin for arbitrary normalisation
 	#HMF forced to integrate to rhomean0
@@ -193,33 +193,33 @@ MRPrhoint_N=function(Hmin=8, Hs=14.47256, alpha=-1.863804 , beta=0.7196221, Omeg
 
 ###Evo stuff:
 
-MRP.B13.Hs=function(z=0, OmegaM=0.308, Sigma8=0.815, mu=12.2158, sigma=1.64125, a=0.058562, b=1.4394, c=0.39111, d=0.11159, e=0.056010, f=0.42444, g=0.90369, h=0.0029417, ref){
+MRP.B13.Hs=function(z=0, OmegaM=0.308, Sigma8=0.815, mu=12.214, sigma=1.6385, a=0.058562, b=1.4394, c=0.39111, d=0.11159, e=0.056010, f=0.42444, g=0.90369, h=0.0029417, ref){
   if(!missing(ref)){
     params=.getcos(ref)
     OmegaM=as.numeric(params['OmegaM'])
     if(!is.na(params['Sigma8'])){Sigma8=as.numeric(params['Sigma8'])}
   }
-  f = a + b*Sigma8 + c*OmegaM + d*Sigma8*z + e*z^2 + f*Sigma8*OmegaM*z - g*z - h*z^3
+  f = a + b*Sigma8 + c*OmegaM + d*Sigma8*z + e*(z^2) + f*Sigma8*OmegaM*z - g*z - h*(z^3)
   return(mu + sigma*f)
 }
 
-MRP.B13.alpha=function(z=0, OmegaM=0.308, Sigma8=0.815, mu=-1.91000, sigma=0.0268194, a=2.6172, b=2.06023, c=1.4791, d=2.2142, e=0.53400, f=2.70981, g=0.19690, ref){
+MRP.B13.alpha=function(z=0, OmegaM=0.308, Sigma8=0.815, mu=-1.9097, sigma=0.026906, a=2.6172, b=2.06023, c=1.4791, d=2.2142, e=0.53400, f=2.70981, g=0.19690, ref){
   if(!missing(ref)){
     params=.getcos(ref)
     OmegaM=as.numeric(params['OmegaM'])
     if(!is.na(params['Sigma8'])){Sigma8=as.numeric(params['Sigma8'])}
   }
-  f = a*OmegaM + b*Sigma8 + c*d^OmegaM*e^z - f - g*z
+  f = a*OmegaM + b*Sigma8 + c*(d^OmegaM)*(e^z) - f - g*z
   return(mu + sigma*f)
 }
 
-MRP.B13.beta=function(z=0, OmegaM=0.308, Sigma8=0.815, mu=0.49961, sigma=0.12913, a=7.5217, b=0.18866, c=0.36891, d=0.071716, e=0.0029092, f=3.4453, g=0.71052, ref){
+MRP.B13.beta=function(z=0, OmegaM=0.308, Sigma8=0.815, mu=0.49961, sigma=0.12913,  a=7.5217, b=0.18866, c=0.36891, d=0.071716, e=0.0029092, f=3.4453, g=0.71052, ref){
   if(!missing(ref)){
     params=.getcos(ref)
     OmegaM=as.numeric(params['OmegaM'])
     if(!is.na(params['Sigma8'])){Sigma8=as.numeric(params['Sigma8'])}
   }
-  f = a*Sigma8*OmegaM - b - c*z - d*e^z - f*OmegaM*z*g^z
+  f = a*Sigma8*OmegaM - b - c*z - d*(e^z) - f*OmegaM*z*(g^z)
   return(mu + sigma*f)
 }
 
@@ -229,21 +229,24 @@ MRP.B13.A=function(z=0, OmegaM=0.308, Sigma8=0.815, mu=-33.268, sigma=7.3593, a=
     OmegaM=as.numeric(params['OmegaM'])
     if(!is.na(params['Sigma8'])){Sigma8=as.numeric(params['Sigma8'])}
   }
-  f = z + a*z^3 - b - c*Sigma8 - d*z^2 - e*Sigma8*z - f*OmegaM*z
+  f = z + a*(z^3) - b - c*Sigma8 - d*(z^2) - e*Sigma8*z - f*OmegaM*z
   return(exp(mu + sigma*f))
 }
 
-MRP.B13=function(z=0, OmegaM=0.308, Sigma8=0.815, Hs=list(), alpha=list(), beta=list(), A=list(), ref){
+MRP.B13=function(z=0, OmegaM=0.308, Sigma8=0.815, OmegaL = 1 - OmegaM - OmegaR, OmegaR = 0, w0 = -1, wprime = 0, Hs=list(), alpha=list(), beta=list(), A=list(), ref){
   if(!missing(ref)){
     params=.getcos(ref)
     OmegaM=as.numeric(params['OmegaM'])
+    OmegaL=as.numeric(params['OmegaL'])
+    if(!is.na(params['OmegaR'])){Sigma8=as.numeric(params['OmegaR'])}
     if(!is.na(params['Sigma8'])){Sigma8=as.numeric(params['Sigma8'])}
   }
   Hs=do.call('MRP.B13.Hs', c(z=z, OmegaM=OmegaM, Sigma8=Sigma8, Hs))
   alpha=do.call('MRP.B13.alpha', c(z=z, OmegaM=OmegaM, Sigma8=Sigma8, alpha))
   beta=do.call('MRP.B13.beta', c(z=z, OmegaM=OmegaM, Sigma8=Sigma8, beta))
   A=do.call('MRP.B13.A', c(z=z, OmegaM=OmegaM, Sigma8=Sigma8, A))
-  return(c(Hs=Hs, alpha=alpha, beta=beta, A=A))
+  Norm=MRPnorm(Hs=Hs, alpha = alpha, beta = beta, OmegaM = OmegaM, OmegaL = OmegaL, OmegaR = OmegaR, w0 = w0, wprime = wprime)
+  return(c(Hs=Hs, alpha=alpha, beta=beta, A=A*Norm))
 }
 
 MRP.B13rho_dNdM=function(z=0, H=seq(10,15,by=0.01), OmegaM=0.308, OmegaL=1-OmegaM-OmegaR, OmegaR=0, w0=-1, wprime=0, Sigma8=0.815, ref, masses=TRUE, normtype='cos'){
@@ -253,11 +256,12 @@ MRP.B13rho_dNdM=function(z=0, H=seq(10,15,by=0.01), OmegaM=0.308, OmegaL=1-Omega
   Hs=MRP.B13.Hs(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
   alpha=MRP.B13.alpha(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
   beta=MRP.B13.beta(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
+  norm=MRPnorm(Hs=Hs, alpha=alpha, beta=beta, OmegaM=OmegaM, OmegaL=OmegaL, OmegaR=OmegaR, w0=w0, wprime=wprime, ref=ref)
   if(normtype=='cos'){
-	  norm=MRPnorm(Hs=Hs, alpha=alpha, beta=beta, OmegaM=OmegaM, OmegaL=OmegaL, OmegaR=OmegaR, w0=w0, wprime=wprime, ref=ref)
+	  norm=norm
   }
   if(normtype=='A'){
-    norm=MRP.B13.A(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
+    norm=MRP.B13.A(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)*norm
   }
   x=10^(H-Hs)
   y=norm*beta*(x^(alpha)*exp(-x^beta))
@@ -272,11 +276,12 @@ MRP.B13rho_dNdlnM=function(z=0, H=seq(10,15,by=0.01), OmegaM=0.308, OmegaL=1-Ome
   Hs=MRP.B13.Hs(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
   alpha=MRP.B13.alpha(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
   beta=MRP.B13.beta(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
+  norm=MRPnorm(Hs=Hs, alpha=alpha, beta=beta, OmegaM=OmegaM, OmegaL=OmegaL, OmegaR=OmegaR, w0=w0, wprime=wprime, ref=ref)
   if(normtype=='cos'){
-	  norm=MRPnorm(Hs=Hs, alpha=alpha, beta=beta, OmegaM=OmegaM, OmegaL=OmegaL, OmegaR=OmegaR, w0=w0, wprime=wprime, ref=ref)
+	  norm=norm
   }
   if(normtype=='A'){
-    norm=MRP.B13.A(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
+    norm=MRP.B13.A(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)*norm
   }
   x=10^(H-Hs)
   y=10^Hs*norm*beta*(x^(alpha+1)*exp(-x^beta))
@@ -291,11 +296,12 @@ MRP.B13rho_dNdlog10M=function(z=0, H=seq(10,15,by=0.01), OmegaM=0.308, OmegaL=1-
   Hs=MRP.B13.Hs(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
   alpha=MRP.B13.alpha(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
   beta=MRP.B13.beta(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
+  norm=MRPnorm(Hs=Hs, alpha=alpha, beta=beta, OmegaM=OmegaM, OmegaL=OmegaL, OmegaR=OmegaR, w0=w0, wprime=wprime, ref=ref)
   if(normtype=='cos'){
-	  norm=MRPnorm(Hs=Hs, alpha=alpha, beta=beta, OmegaM=OmegaM, OmegaL=OmegaL, OmegaR=OmegaR, w0=w0, wprime=wprime, ref=ref)
+	  norm=norm
   }
   if(normtype=='A'){
-    norm=MRP.B13.A(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
+    norm=MRP.B13.A(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)*norm
   }
   x=10^(H-Hs)
   y=10^Hs*norm*beta*(x^(alpha+1)*exp(-x^beta))*log(10)
@@ -310,11 +316,12 @@ MRP.B13rhoint_N=function(Hmin=8, z=0, OmegaM=0.308, OmegaL=1-OmegaM-OmegaR, Omeg
   Hs=MRP.B13.Hs(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
   alpha=MRP.B13.alpha(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
   beta=MRP.B13.beta(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
+  norm=MRPnorm(Hs=Hs, alpha=alpha, beta=beta, OmegaM=OmegaM, OmegaL=OmegaL, OmegaR=OmegaR, w0=w0, wprime=wprime, ref=ref)
   if(normtype=='cos'){
-	  norm=MRPnorm(Hs=Hs, alpha=alpha, beta=beta, OmegaM=OmegaM, OmegaL=OmegaL, OmegaR=OmegaR, w0=w0, wprime=wprime, ref=ref)
+	  norm=norm
   }
   if(normtype=='A'){
-    norm=MRP.B13.A(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
+    norm=MRP.B13.A(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)*norm
   }
 	return(norm*(10^Hs)*gamma_inc((10^(Hmin-Hs))^beta,a=(alpha+1)/beta))
 }
@@ -326,11 +333,12 @@ MRP.B13rhoint_M=function(Hmin=8, z=0, OmegaM=0.308, OmegaL=1-OmegaM-OmegaR, Omeg
   Hs=MRP.B13.Hs(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
   alpha=MRP.B13.alpha(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
   beta=MRP.B13.beta(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
+  norm=MRPnorm(Hs=Hs, alpha=alpha, beta=beta, OmegaM=OmegaM, OmegaL=OmegaL, OmegaR=OmegaR, w0=w0, wprime=wprime, ref=ref)
   if(normtype=='cos'){
-	  norm=MRPnorm(Hs=Hs, alpha=alpha, beta=beta, OmegaM=OmegaM, OmegaL=OmegaL, OmegaR=OmegaR, w0=w0, wprime=wprime, ref=ref)
+	  norm=norm
   }
   if(normtype=='A'){
-    norm=MRP.B13.A(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)
+    norm=MRP.B13.A(z=z, OmegaM=OmegaM, Sigma8=Sigma8, ref=ref)*norm
   }
 	return(norm*(10^Hs)^2*gamma_inc((10^(Hmin-Hs))^beta,a=(alpha+2)/beta))
 }
